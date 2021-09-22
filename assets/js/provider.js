@@ -64,11 +64,11 @@ function create_user_account() {
                 showAlert("Fields Validation", "Email is invalid", "warning", "Ok");
             } else {
                 $.ajax({
-                    url: api_url + api_port + "/api/v1/users",
                     type: "POST",
-                    data: JSON.stringify({ username: username, email: emailAddress, password: password, password_confirmation: confirmPassword }),
-                    contentType: "application/json",
+                    url: api_url + api_port + "/api/v1/users",
                     dataType: "JSON",
+                    contentType: "application/json",
+                    data: JSON.stringify({ username: username, email: emailAddress, password: password, password_confirmation: confirmPassword }),
                     success: function(res) {
                         if (res.status == "success") {
                             swal(res.status, res.message, res.status).then(function() {
@@ -99,10 +99,10 @@ function sign_in() {
             var api_url = sessionStorage.getItem("apiURL");
             var api_port = sessionStorage.getItem("apiPort");
             $.ajax({
-                url: api_url + api_port + "/api/v1/login",
                 type: "POST",
-                contentType: "application/json",
+                url: api_url + api_port + "/api/v1/login",
                 dataType: "JSON",
+                contentType: "application/json",
                 data: JSON.stringify({ username: username, password: password }),
                 success: function(res) {
                     if (res.status == "success") {
@@ -142,8 +142,8 @@ function view_providers() {
     var api_port = sessionStorage.getItem("apiPort");
     var authorization = sessionStorage.getItem("Authorization");
     $.ajax({
-        url: api_url + api_port + "/api/v1/users",
         type: "GET",
+        url: api_url + api_port + "/api/v1/users",
         dataType: 'JSON',
         headers: { "Authorization": "Bearer " + authorization + "" },
         success: function(providers) {

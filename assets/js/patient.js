@@ -36,10 +36,10 @@ function add_patient() {
                 showAlert("Fields Validation", "Date is invalid", "warning", "Ok");
             } else {
                 $.ajax({
-                    url: api_url + api_port + "/api/v1/patients",
                     type: "POST",
-                    contentType: "application/json",
+                    url: api_url + api_port + "/api/v1/patients",
                     dataType: "JSON",
+                    contentType: "application/json",
                     headers: { "Authorization": "Bearer " + authorization + "" },
                     data: JSON.stringify({
                         first_name: firstName,
@@ -81,10 +81,10 @@ function add_patient_health_record() {
             showAlert("Fields Validation", "Please enter in all fields", "warning", "Ok"); //fields validation
         } else {
             $.ajax({
-                url: api_url + api_port + "/api/v1/vital_signs",
                 type: "POST",
-                contentType: "application/json",
+                url: api_url + api_port + "/api/v1/patients/" + patient_id + "/vital_signs",
                 dataType: "JSON",
+                contentType: "application/json",
                 headers: { "Authorization": "Bearer " + authorization + "" },
                 data: JSON.stringify({ weight: weight, height: height, temp_reading: temp_reading, diagnosis: diagnosis, patient_id: patient_id }),
                 success: function(res) {
@@ -108,8 +108,8 @@ function add_patient_health_record() {
 //fetch request all patients
 function load_patients_data() {
     $.ajax({
-        url: api_url + api_port + "/api/v1/patients",
         type: "GET",
+        url: api_url + api_port + "/api/v1/patients",
         dataType: 'JSON',
         headers: { "Authorization": "Bearer " + authorization + "" },
         success: function(patients) {
@@ -155,8 +155,8 @@ function load_patient_medical_record() {
         var patient_id = $(this).attr("data-id1");
         $("#id").val(patient_id);
         $.ajax({
-            url: api_url + api_port + "/api/v1/vital_signs/" + patient_id,
             type: "GET",
+            url: api_url + api_port + "/api/v1/patients/" + patient_id + "/vital_signs/" + patient_id,
             dataType: 'JSON',
             headers: { "Authorization": "Bearer " + authorization + "" },
             success: function(vitals) {
