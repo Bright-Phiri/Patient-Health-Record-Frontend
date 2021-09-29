@@ -10,12 +10,9 @@
     <link rel="stylesheet" href="../assets/css/auth.css">
     <script src="../assets/js/jquery-3.5.1.min.js"></script>
     <script>
-        sessionStorage.setItem("apiURL", "http://127.0.0.1:");
-        sessionStorage.setItem("apiPort", "3000");
         if (sessionStorage.getItem("Authorization") == null) {
-            window.location.href = 'views/login.html';
-        } else {
-            window.location.href = 'views/dashboard.html';
+            sessionStorage.setItem("apiURL", "http://127.0.0.1:");
+            sessionStorage.setItem("apiPort", "3000");
         }
     </script>
     <script src="../assets/js/bootstrap.min.js"></script>
