@@ -32,8 +32,6 @@ function add_patient() {
                 showAlert("Fields Validation", "District is invalid", "warning", "Ok");
             } else if (!village.match(pattern)) {
                 showAlert("Fields Validation", "Village is invalid", "warning", "Ok");
-            } else if (dob > date && dob.getDay() != date.getDay()) {
-                showAlert("Fields Validation", "Date is invalid", "warning", "Ok");
             } else {
                 $.ajax({
                     type: "POST",
@@ -51,9 +49,13 @@ function add_patient() {
                         occupation: occupation
                     }),
                     success: function(res) {
-                        swal(res.status, res.message, res.status).then(function() {
-                            $("form").trigger("reset");
-                        });
+                        if (res.status == 'success') {
+                            swal(res.status, res.message, res.status).then(function() {
+                                $("form").trigger("reset");
+                            });
+                        } else {
+                            swal(res.status, res.message + ", " + res.data, res.status).then(function() {});
+                        }
                     },
                     error: function(jqXHR) {
                         if (jqXHR.status == 404) {

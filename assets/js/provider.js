@@ -75,7 +75,7 @@ function create_user_account() {
                                 window.location.href = '../views/login.html';
                             })
                         } else {
-                            swal(res.status, res.message, res.status);
+                            swal(res.status, res.message + ", " + res.error + " ", res.status);
                         }
                     },
                     error: function(jqXHR, status, error) {
