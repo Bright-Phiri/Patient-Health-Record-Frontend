@@ -34,7 +34,7 @@ function validate_input_fields() {
         var password = $("#password").val();
         if (confirm_password != "" && password != "") {
             if (password != confirm_password) {
-                $("#confirm_password_status").text("Those passwords didn't match. Try again.");
+                $("#confirm_password_status").text("Those passwords didn't match, Try again.");
                 $("#createAccountBtn").attr("disabled", true);
             } else {
                 $("#confirm_password_status").text("");
