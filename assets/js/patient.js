@@ -69,6 +69,11 @@ function add_patient() {
         }
 
     });
+
+    $("#cancel-add-user-btn").click(function() {
+        $("#patient-form").trigger("reset");
+    });
+
     add_patient_health_record();
 }
 
