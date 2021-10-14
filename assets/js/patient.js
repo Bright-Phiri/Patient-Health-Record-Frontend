@@ -139,7 +139,7 @@ function draw_patients_table(patients) {
         patients_data += '<td>' + value.dob + '</td>';
         patients_data += '<td>' + value.district + ' ' + value.village + '</td>';
         patients_data += '<td>' + value.occupation + '</td>';
-        patients_data += "<td><Button class='btn btn-outline-primary' id='add-medical-record' data-id='" + value.id + "'> <i class='fa fa-plus-circle'></i> </Button> <Button class='btn btn-outline-secondary' id='view-medical-record' data-id1='" + value.id + "'><i class='fa fa-eye'></i></Button></td>";
+        patients_data += "<td><Button class='btn btn-outline-primary btn-sm' id='add-medical-record' data-id='" + value.id + "'> <i class='fa fa-plus-circle'></i> </Button> <Button class='btn btn-outline-secondary btn-sm' id='view-medical-record' data-id1='" + value.id + "'><i class='fa fa-eye'></i></Button></td>";
         patients_data += '</tr>';
     });
     return patients_data;
