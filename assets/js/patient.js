@@ -96,7 +96,6 @@ function add_patient_health_record() {
                 data: JSON.stringify({ weight: weight, height: height, temp_reading: temp_reading, diagnosis: diagnosis, patient_id: patient_id }),
                 success: function(res) {
                     swal(res.status, res.message, res.status).then(function() {
-                        $("form").trigger("reset");
                         $("#medicalRecord").modal("hide");
                     });
                 },
