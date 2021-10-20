@@ -4,7 +4,6 @@ $(document).ready(function() {
 });
 
 var api_url = sessionStorage.getItem("apiURL");
-var api_port = sessionStorage.getItem("apiPort");
 var authorization = sessionStorage.getItem("Authorization");
 
 function logout() {
@@ -16,7 +15,7 @@ function logout() {
 
 function stati() {
     $.ajax({
-        url: api_url + api_port + "/api/v1/statistics",
+        url: api_url + "/api/v1/statistics",
         type: "GET",
         dataType: "JSON",
         headers: { "Authorization": "Bearer " + authorization + "" },
@@ -27,9 +26,12 @@ function stati() {
         },
         error: function(jqXHR) {
             if (jqXHR.status == 404) {
-                swal("Error", "API is offline", "error").then(function() {
+                swal("Error", "The requested URL was not found", "error").then(function() {
                     window.location.href = '../views/login.html';
                 });
+            }
+            if (jqXHR.status == 503){
+                swal("Error", "Service Unavailable", "error");
             }
         }
     });

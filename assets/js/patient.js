@@ -4,7 +4,6 @@ $(document).ready(function() {
 });
 
 var api_url = sessionStorage.getItem("apiURL");
-var api_port = sessionStorage.getItem("apiPort");
 var authorization = sessionStorage.getItem("Authorization");
 
 
@@ -35,7 +34,7 @@ function add_patient() {
             } else {
                 $.ajax({
                     type: "POST",
-                    url: api_url + api_port + "/api/v1/patients",
+                    url: api_url + "/api/v1/patients",
                     dataType: "JSON",
                     contentType: "application/json",
                     headers: { "Authorization": "Bearer " + authorization + "" },
@@ -57,11 +56,9 @@ function add_patient() {
                             swal(res.status, res.message + ", " + res.data, res.status).then(function() {});
                         }
                     },
-                    error: function(jqXHR) {
+                    error: function(jqXHR, status, error) {
                         if (jqXHR.status == 404) {
-                            swal("Error", "API is offline", "error").then(function() {
-                                window.location.href = '../views/login.html';
-                            });
+                            swal("Error", "The requested URL was not found", "error");
                         }
                     }
                 })
@@ -89,7 +86,7 @@ function add_patient_health_record() {
         } else {
             $.ajax({
                 type: "POST",
-                url: api_url + api_port + "/api/v1/patients/" + patient_id + "/vital_signs",
+                url: api_url + "/api/v1/patients/" + patient_id + "/vital_signs",
                 dataType: "JSON",
                 contentType: "application/json",
                 headers: { "Authorization": "Bearer " + authorization + "" },
@@ -99,11 +96,9 @@ function add_patient_health_record() {
                         $("#medicalRecord").modal("hide");
                     });
                 },
-                error: function(jqXHR) {
+                error: function(jqXHR, status, error) {
                     if (jqXHR.status == 404) {
-                        swal("Error", "API is offline", "error").then(function() {
-                            window.location.href = '../views/login.html';
-                        });
+                        swal("Error", "The requested URL was not found", "error");
                     }
                 }
             });
@@ -115,7 +110,7 @@ function add_patient_health_record() {
 function load_patients_data() {
     $.ajax({
         type: "GET",
-        url: api_url + api_port + "/api/v1/patients",
+        url: api_url + "/api/v1/patients",
         dataType: 'JSON',
         headers: { "Authorization": "Bearer " + authorization + "" },
         success: function(patients) {
@@ -123,6 +118,11 @@ function load_patients_data() {
             $("#table-body").html(data);
             $("#patientstable").DataTable();
         },
+        error: function(jqXHR, status, error) {
+            if (jqXHR.status == 404) {
+                swal("Error", "The requested URL was not found", "error");
+            }
+        }
     });
     select_patient_record();
     load_patient_medical_record();
@@ -162,7 +162,7 @@ function load_patient_medical_record() {
         $("#id").val(patient_id);
         $.ajax({
             type: "GET",
-            url: api_url + api_port + "/api/v1/patients/" + patient_id + "/vital_signs/" + patient_id,
+            url: api_url + "/api/v1/patients/" + patient_id + "/vital_signs/" + patient_id,
             dataType: 'JSON',
             headers: { "Authorization": "Bearer " + authorization + "" },
             success: function(vitals) {
@@ -174,6 +174,11 @@ function load_patient_medical_record() {
                     $("#viewMedicalRecord").modal("show");
                 }
             },
+            error: function(jqXHR, status, error) {
+              if (jqXHR.status == 404) {
+                swal("Error", "The requested URL was not found", "error");
+            }
+        }
         });
 
     });

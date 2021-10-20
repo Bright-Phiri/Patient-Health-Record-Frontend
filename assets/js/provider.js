@@ -5,7 +5,6 @@ $(document).ready(function() {
 });
 
 var api_url = sessionStorage.getItem("apiURL");
-var api_port = sessionStorage.getItem("apiPort");
 
 function validate_input_fields() {
     $("#password").on("keyup blur", function() {
@@ -65,7 +64,7 @@ function create_user_account() {
             } else {
                 $.ajax({
                     type: "POST",
-                    url: api_url + api_port + "/api/v1/users",
+                    url: api_url + "/api/v1/users",
                     dataType: "JSON",
                     contentType: "application/json",
                     data: JSON.stringify({ username: username, email: emailAddress, password: password, password_confirmation: confirmPassword }),
@@ -80,7 +79,7 @@ function create_user_account() {
                     },
                     error: function(jqXHR, status, error) {
                         if (jqXHR.status == 404) {
-                            swal("Error", "The requested URL was not found on this server", "error");
+                            swal("Error", "The requested URL was not found", "error");
                         }
                     }
                 });
@@ -97,10 +96,9 @@ function sign_in() {
             showAlert("Fields Validation", "Please enter in all fields", "warning", "Ok");
         } else {
             var api_url = sessionStorage.getItem("apiURL");
-            var api_port = sessionStorage.getItem("apiPort");
             $.ajax({
                 type: "POST",
-                url: api_url + api_port + "/api/v1/login",
+                url: api_url + "/api/v1/login",
                 dataType: "JSON",
                 contentType: "application/json",
                 data: JSON.stringify({ username: username, password: password }),
@@ -115,8 +113,9 @@ function sign_in() {
                     }
                 },
                 error: function(jqXHR) {
+                    console.log("Hahahaha"+status);
                     if (jqXHR.status == 404) {
-                        swal("Error", "API is offline", "error").then(function() {
+                        swal("Error", "The requested URL was not found", "error").then(function() {
                             window.location.href = '../views/login.html';
                         })
                     }
@@ -139,11 +138,10 @@ function sign_in() {
 
 function view_providers() {
     var api_url = sessionStorage.getItem("apiURL");
-    var api_port = sessionStorage.getItem("apiPort");
     var authorization = sessionStorage.getItem("Authorization");
     $.ajax({
         type: "GET",
-        url: api_url + api_port + "/api/v1/users",
+        url: api_url + "/api/v1/users",
         dataType: 'JSON',
         headers: { "Authorization": "Bearer " + authorization + "" },
         success: function(providers) {
