@@ -104,6 +104,12 @@ function add_patient_health_record() {
             });
         }
     })
+
+    $("#health-record-cancel_btn").click(function(){
+        $("form").trigger("reset");
+    })
+
+
 }
 
 //fetch request all patients
