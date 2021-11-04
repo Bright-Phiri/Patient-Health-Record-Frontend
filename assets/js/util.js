@@ -7,7 +7,7 @@ var api_url = sessionStorage.getItem("apiURL");
 var authorization = sessionStorage.getItem("Authorization");
 
 function logout() {
-    $("#logout-btn").click(function() {
+    $("#signout-btn").click(function() {
         sessionStorage.removeItem("Authorization");
         window.location.href = '../views/login.html';
     });
@@ -30,7 +30,7 @@ function stati() {
                     window.location.href = '../views/login.html';
                 });
             }
-            if (jqXHR.status == 503){
+            if (jqXHR.status == 503) {
                 swal("Error", "Service Unavailable", "error");
             }
         }

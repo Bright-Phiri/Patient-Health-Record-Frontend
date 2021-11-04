@@ -105,7 +105,7 @@ function add_patient_health_record() {
         }
     })
 
-    $("#health-record-cancel_btn").click(function(){
+    $("#health-record-cancel_btn").click(function() {
         $("form").trigger("reset");
     })
 
@@ -181,10 +181,10 @@ function load_patient_medical_record() {
                 }
             },
             error: function(jqXHR, status, error) {
-              if (jqXHR.status == 404) {
-                swal("Error", "The requested URL was not found", "error");
+                if (jqXHR.status == 404) {
+                    swal("Error", "The requested URL was not found", "error");
+                }
             }
-        }
         });
 
     });
@@ -195,7 +195,7 @@ function patient_health_record(vitals) {
     $.each(vitals, function(key, value) {
         var diagnosis = value.diagnosis.split("|");
         var diagnosis_date = value.created_at.substr(0, 7);
-        health_record += "<li> <a class='text-primary'>Vital Signs</a> <a class='float-right text-primary'>" + diagnosis_date + "</a>";
+        health_record += "<li> <a class='text-decoration-none'>Vital Signs</a> <a class='float-end text-decoration-none'>" + diagnosis_date + "</a>";
         health_record += "<table class='table table-bordered mt-2'> <thead class='thead-light'> <tr> <th scope='col'>Weight(Kgs)</th> <th scope='col'>Height(M)</th> <th scope='col'>Temperature Reading<span>&#8451;</span></th></tr></thead>";
         health_record += "<tbody><tr><td>" + value.weight + "</td><td>" + value.height + "</td><td>" + value.temp_reading + "</td></tr><tbody>";
         health_record += "</table> <div class='card mt-2'> <div class='card-header bg-light'> <h6>Diagnosis used</h6>  </div><div class='card-body'><ul>";

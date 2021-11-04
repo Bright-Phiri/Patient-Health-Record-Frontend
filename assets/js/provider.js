@@ -113,7 +113,7 @@ function sign_in() {
                     }
                 },
                 error: function(jqXHR) {
-                    console.log("Hahahaha"+status);
+                    console.log("Hahahaha" + status);
                     if (jqXHR.status == 404) {
                         swal("Error", "The requested URL was not found", "error").then(function() {
                             window.location.href = '../views/login.html';
