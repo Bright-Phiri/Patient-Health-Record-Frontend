@@ -1,14 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Patient Health Record</title>
-    <link rel="icon" href="../assets/images/patient_diagnosis.png" type="image/x-icon">
+    <link rel="icon" href="../assets/images/patient_diagnosis.png" type="image/x-icon" />
     <!-- Bootstrap core CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 
     <style>
         .bd-placeholder-img {
@@ -26,84 +26,119 @@
         }
     </style>
 
-
     <!-- Custom styles for this template -->
-    <link href="../assets/css/dashboard.css" rel="stylesheet">
+    <link href="../assets/css/dashboard.css" rel="stylesheet" />
     <script>
         if (sessionStorage.getItem("Authorization") == null) {
-            window.location.href = 'login.html';
+            window.location.href = "login.html";
         }
     </script>
-
 </head>
 
 <body>
-
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">
-            <h5><img src="../assets/images/patient_diagnosis.png" alt="" width="20px"> Health Record</h5>
+            <h5>
+                <img src="../assets/images/patient_diagnosis.png" alt="" width="20px" /> Health Record
+            </h5>
         </a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <span class="navbar-toggler-icon"></span>
+      </button>
         <div class="bg-dark w-100"></div>
         <div class="navbar-nav">
             <div class="nav-item text-nowrap">
-                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link px-3" href="#">Sign out</a>
-            </div>
+                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="nav-link px-3" href="#">Sign out</a
+          >
         </div>
+      </div>
     </header>
 
     <div class="container-fluid">
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sign-out</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to Sign-out?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-                        <button id="signout-btn" class="btn btn-outline-primary">Sign-out</button>
-                    </div>
-                </div>
+      <!-- Logout Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Sign-out</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
+            <div class="modal-body">
+              <p>Are you sure you want to Sign-out?</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-outline-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button id="signout-btn" class="btn btn-outline-primary">
+                Sign-out
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                <div class="position-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="dashboard.html">
-                                <span data-feather="home"></span> Dashboard
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="add_patient.html">
-                                <span data-feather="user-plus"></span> Create patient
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="view_providers.html">
-                                <span data-feather="list"></span> View providers
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="view_patients.html">
-                                <span data-feather="list"></span> View patients
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse"
+        >
+          <div class="position-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="dashboard.html"
+                >
+                  <span data-feather="home"></span> Dashboard
+                </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="add_patient.html">
+                        <span data-feather="user-plus"></span> Create patient
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="view_providers.html">
+                        <span data-feather="list"></span> View providers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="view_patients.html">
+                        <span data-feather="list"></span> View patients
+                    </a>
+                </li>
+                </ul>
+            </div>
             </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-2 border-bottom">
+                <div class="
+              d-flex
+              justify-content-between
+              flex-wrap flex-md-nowrap
+              align-items-center
+              pt-3
+              pb-2
+              mb-2
+              border-bottom
+            ">
                     <h4>Create patient</h4>
                 </div>
                 <div class="row">
@@ -113,85 +148,120 @@
                                 <h6>Patient Details</h6>
                             </div>
                             <div class="card-body">
-
                                 <form id="patient-form">
                                     <div class="form-group row">
-                                        <div class="form-group col-xs-5 col-lg-5 col-md-5 col-sm-6 p-2">
+                                        <div class="
+                          form-group
+                          col-xs-5 col-lg-5 col-md-5 col-sm-6
+                          p-2
+                        ">
                                             <label for="firstname">First Name</label>
-                                            <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name">
+                                            <input type="text" id="firstname" name="firstname" class="form-control" placeholder="First Name" />
                                         </div>
-                                        <div class="form-group col-xs-5 col-lg-5 col-md-5 col-sm-6 p-2">
+                                        <div class="
+                          form-group
+                          col-xs-5 col-lg-5 col-md-5 col-sm-6
+                          p-2
+                        ">
                                             <label for="lastname">Last Name</label>
-                                            <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name">
+                                            <input type="text" id="lastname" name="lastname" class="form-control" placeholder="Last Name" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="form-group col-xs-5 col-lg-5 col-md-5 col-sm-6 p-2">
+                                        <div class="
+                          form-group
+                          col-xs-5 col-lg-5 col-md-5 col-sm-6
+                          p-2
+                        ">
                                             <label for="gender">Gender</label>
                                             <select class="form-control" id="gender" name="gender">
-                                        <option value="">Select</option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
+                          <option value="">Select</option>
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                        </select>
                                         </div>
-                                        <div class="form-group col-xs-5 col-lg-5 col-md-5 col-sm-6 p-2">
+                                        <div class="
+                          form-group
+                          col-xs-5 col-lg-5 col-md-5 col-sm-6
+                          p-2
+                        ">
                                             <label for="birthdate">Date Of Birth</label>
-                                            <input type="date" class="form-control" id="birthdate" name="dob">
+                                            <input type="date" class="form-control" id="birthdate" name="dob" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="form-group col-xs-5 col-lg-5 col-md-5 col-sm-6 p-2">
+                                        <div class="
+                          form-group
+                          col-xs-5 col-lg-5 col-md-5 col-sm-6
+                          p-2
+                        ">
                                             <label for="district">District</label>
 
-                                            <input type="text" id="district" name="district" class="form-control" placeholder="District">
+                                            <input type="text" id="district" name="district" class="form-control" placeholder="District" />
                                         </div>
-                                        <div class="form-group col-xs-5 col-lg-5 col-md-5 col-sm-6 p-2">
+                                        <div class="
+                          form-group
+                          col-xs-5 col-lg-5 col-md-5 col-sm-6
+                          p-2
+                        ">
                                             <label for="village">Village</label>
-                                            <input type="text" id="village" name="village" class="form-control" placeholder="Home Village">
+                                            <input type="text" id="village" name="village" class="form-control" placeholder="Home Village" />
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <div class="form-group col-xs-5 col-lg-5 col-md-5 col-sm-12 p-2">
+                                        <div class="
+                          form-group
+                          col-xs-5 col-lg-5 col-md-5 col-sm-12
+                          p-2
+                        ">
                                             <label for="district">Occupation</label>
                                             <select class="form-control" id="occupation" name="occupation">
-                                        <option value="">Select</option>
-                                        <option value="Accountant">Accountant</option>
-                                        <option value="Software Developer">Software Developer</option>
-                                        <option value="Business Owner">Business Owner</option>
-                                        <option value="Mechanic">Mechanic</option>
-                                        <option value="Driver">Driver</option>
-                                        <option value="Welder">Welder</option>
-                                        <option value="Construction worker">Construction worker</option>
-                                        <option value="Painter">Painter</option>
-                                        <option value="Radiologist">Radiologist</option>
-                                        <option value="Student">Student</option>
-                                        <option value="Farmer">Farmer</option>
-                                        <option value="Coal miner">Coal miner</option>
-                                        <option value="Coal miner">Other</option>
-                                    </select>
+                          <option value="">Select</option>
+                          <option value="Accountant">Accountant</option>
+                          <option value="Software Developer">
+                            Software Developer
+                          </option>
+                          <option value="Business Owner">Business Owner</option>
+                          <option value="Mechanic">Mechanic</option>
+                          <option value="Driver">Driver</option>
+                          <option value="Welder">Welder</option>
+                          <option value="Construction worker">
+                            Construction worker
+                          </option>
+                          <option value="Painter">Painter</option>
+                          <option value="Radiologist">Radiologist</option>
+                          <option value="Student">Student</option>
+                          <option value="Farmer">Farmer</option>
+                          <option value="Coal miner">Coal miner</option>
+                          <option value="Coal miner">Other</option>
+                        </select>
                                         </div>
                                     </div>
                                 </form>
                             </div>
-                            <div class="card-footer ">
-                                <button class="btn btn-outline-secondary " id="cancel-add-user-btn">Cancel</button>
-                                <button class="btn btn-outline-primary" id="add-user-btn">Add Patient</button>
+                            <div class="card-footer">
+                                <button class="btn btn-outline-secondary" id="cancel-add-user-btn">
+                    Cancel
+                  </button>
+                                <button class="btn btn-outline-primary" id="add-user-btn">
+                    Add Patient
+                  </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
-    </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js "></script>
-    <script src="../assets/js/sweetalert.min.js "></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-    <script src="../assets/js/dashboard.js"></script>
-    <script src="../assets/js/util.js"></script>
-    <script src="../assets/js/patient.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js "></script>
+        <script src="../assets/js/sweetalert.min.js "></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
+        <script src="../assets/js/dashboard.js"></script>
+        <script src="../assets/js/util.js"></script>
+        <script src="../assets/js/patient.js"></script>
 </body>
 
 </html>
