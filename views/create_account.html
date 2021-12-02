@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../assets/css/auth.css">
     <script>
         if (sessionStorage.getItem("Authorization") == null) {
-            sessionStorage.setItem("apiURL", "https://patienthealthrecordapi.herokuapp.com");
+            sessionStorage.setItem("apiURL", "http://127.0.0.1:3000");
         }
     </script>
 </head>
@@ -33,9 +33,12 @@
                                 <input type="email" id="email" name="email" class="form-control" placeholder="Email address">
                                 <p class="text-danger" id="email_status"></p>
                             </div>
+                            <div class="form-label-group">
+                                <input type="file" id="avatar" name="avatar" class="form-control">
+                            </div>
 
                             <div class="form-label-group">
-                                <input type="password" id="password" name="password" class="form-control" placeholder="Password">
+                                <input type="password" id="password" name="password" class="form-control mt-3" placeholder="Password">
                                 <p class="text-danger" id="password_status"></p>
                             </div>
 

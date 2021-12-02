@@ -7,5 +7,10 @@
 
 
     // eslint-disable-next-line no-unused-vars
+    // Graphs
 
+    // eslint-disable-next-line no-unused-vars
+
+    $("#avatar").attr("src", sessionStorage.getItem("avatar"));
+    $("#user").text(sessionStorage.getItem("username"));
 })()

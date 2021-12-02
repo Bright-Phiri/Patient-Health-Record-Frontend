@@ -94,6 +94,7 @@ function add_patient_health_record() {
                 success: function(res) {
                     swal(res.status, res.message, res.status).then(function() {
                         $("#medicalRecord").modal("hide");
+                        $("form").trigger("reset");
                     });
                 },
                 error: function(jqXHR, status, error) {

@@ -52,6 +52,7 @@ function create_user_account() {
         var emailAddress = $("#email").val();
         var password = $("#password").val();
         var confirmPassword = $("#confirm-password").val();
+        var avatar = $("#avatar")[0].files[0];
         if (username == "" || emailAddress == "" || password == "" || confirmPassword == "") {
             showAlert("Fields Validation", "Please enter in all fields", "warning", "Ok");
         } else {
@@ -62,12 +63,20 @@ function create_user_account() {
             } else if (!emailAddress.match(email_pattern)) {
                 showAlert("Fields Validation", "Email is invalid", "warning", "Ok");
             } else {
+                var formData = new FormData();
+                formData.append("username", username);
+                formData.append("email", emailAddress);
+                formData.append("avatar", avatar);
+                formData.append("password", password);
+                formData.append("password_confirmation", confirmPassword);
                 $.ajax({
                     type: "POST",
                     url: api_url + "/api/v1/users",
                     dataType: "JSON",
                     contentType: "application/json",
-                    data: JSON.stringify({ username: username, email: emailAddress, password: password, password_confirmation: confirmPassword }),
+                    data: formData,
+                    contentType: false,
+                    processData: false,
                     success: function(res) {
                         if (res.status == "success") {
                             swal(res.status, res.message, res.status).then(function() {
@@ -105,6 +114,8 @@ function sign_in() {
                 success: function(res) {
                     if (res.status == "success") {
                         sessionStorage.setItem("Authorization", res.token);
+                        sessionStorage.setItem("avatar", res.avatar);
+                        sessionStorage.setItem("username", res.user.username);
                         swal(res.status, res.message, res.status).then(function() {
                             window.location.href = '../views/dashboard.html';
                         });
@@ -113,7 +124,6 @@ function sign_in() {
                     }
                 },
                 error: function(jqXHR) {
-                    console.log("Hahahaha" + status);
                     if (jqXHR.status == 404) {
                         swal("Error", "The requested URL was not found", "error").then(function() {
                             window.location.href = '../views/login.html';
